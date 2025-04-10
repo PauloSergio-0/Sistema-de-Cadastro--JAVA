@@ -4,7 +4,7 @@ import br.com.paulo.model.Cliente;
 
 public interface Cadastravel<T> {
 
-    void Cadastrar(T object);
+    void cadastrar(T object);
 
-    void Listar();
+    void listar();
 }

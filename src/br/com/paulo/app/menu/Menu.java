@@ -2,8 +2,8 @@ package br.com.paulo.app.menu;
 
 import br.com.paulo.model.Cliente;
 import br.com.paulo.model.Produto;
-import br.com.paulo.service.CadastroCliente;
-import br.com.paulo.service.CadastroProduto;
+import br.com.paulo.service.cliente.CadastroCliente;
+import br.com.paulo.service.produto.CadastroProduto;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -22,9 +22,9 @@ public class Menu {
                         === MENU PRINCIPAL ====
                         1 - Cadastrar cliente
                         2 - Cadastrar produto
-                        3 - Listar clientes
-                        4 - Listar produtos
-                        5 - Listar produtos por preço (ordem crescente)
+                        3 - listar clientes
+                        4 - listar produtos
+                        5 - listar produtos por preço (ordem crescente)
                         6 - Filtrar clientes com email @gmail.com
                         7 - Buscar produto por nome
                         0 - Sair
@@ -39,16 +39,18 @@ public class Menu {
                 break;
 
             } else if (opcao == 1) {
-                clientes.Cadastrar(CriarCliente());
+                clientes.cadastrar(CriarCliente());
 
             } else if (opcao == 2) {
-                clientes.Listar();
+                produtos.cadastrar(CriarProduto());
 
             } else if (opcao == 3) {
-                produtos.Cadastrar(CriarProduto());
+                clientes.listar();
 
             } else if (opcao == 4) {
-                produtos.Listar();
+                produtos.listar();
+            } else if (opcao==5) {
+                produtos.ordenarLista();
             }
 
 
