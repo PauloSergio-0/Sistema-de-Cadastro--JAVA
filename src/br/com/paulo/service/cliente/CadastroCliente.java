@@ -20,5 +20,15 @@ public class CadastroCliente implements Cadastravel<Cliente> {
     public void listar() {
         System.out.println(listaCliente);
     }
+
+    public void buscarEmail(String dominioEmail) {
+        System.out.println("---Clientes Gmail---");
+        for(Cliente cliente: listaCliente) {
+            if(cliente.email().endsWith(dominioEmail)){
+                System.out.println("Nome: " + cliente.nome() + "\nE-mail: "+ cliente.email());
+            }
+        }
+    }
+
 }
 

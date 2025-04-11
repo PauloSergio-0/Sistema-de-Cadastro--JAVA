@@ -39,25 +39,31 @@ public class Menu {
                 break;
 
             } else if (opcao == 1) {
-                clientes.cadastrar(CriarCliente());
+                clientes.cadastrar(criarCliente());
 
             } else if (opcao == 2) {
-                produtos.cadastrar(CriarProduto());
+                produtos.cadastrar(criarProduto());
 
             } else if (opcao == 3) {
                 clientes.listar();
 
             } else if (opcao == 4) {
                 produtos.listar();
-            } else if (opcao==5) {
+            } else if (opcao == 5) {
                 produtos.ordenarLista();
+            } else if (opcao == 6) {
+                clientes.buscarEmail("@gmail.com");
+            } else if (opcao == 7) {
+                System.out.println(produtos.buscarProduto(nomeProduto()));
+            }else {
+                System.out.println("Opção não encontrada");
             }
 
 
         }
     }
 
-    private static Cliente CriarCliente(){
+    private static Cliente criarCliente(){
         System.out.println("Nome Cliente: ");
         String nome = scanner.nextLine();
 
@@ -67,13 +73,18 @@ public class Menu {
         return new Cliente(nome, email);
     }
 
-    private static Produto CriarProduto(){
+    private static Produto criarProduto(){
         System.out.println("Nome Produto: ");
-        String nome = scanner.nextLine();
+        String nome = scanner.nextLine().trim();
 
         System.out.println("Preço Produto: ");
-        Double preco = scanner.nextDouble();
+        double preco = scanner.nextDouble();
 
         return new Produto(nome, preco);
     };
+
+    private static String nomeProduto(){
+        System.out.println("Nome Produto: ");
+        return  scanner.nextLine().trim();
+    }
 }

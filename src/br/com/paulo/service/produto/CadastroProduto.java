@@ -1,8 +1,6 @@
 package br.com.paulo.service.produto;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -25,8 +23,17 @@ public class CadastroProduto implements Cadastravel<Produto>{
 
     public void ordenarLista(){
         List<Produto> produtoOrdenados = new ArrayList<>(listaProduto);
-        produtoOrdenados.sort(Comparator.comparing(Produto::preco));
-        produtoOrdenados.forEach(p -> System.out.println(p.nome() + " - " + p.preco()));
+        produtoOrdenados.sort(Comparator.comparing(Produto::preco)); //Ordena com base no PREÇO SO PRODUTO
+        produtoOrdenados.forEach(p -> System.out.println( p.nome() + " - " + p.preco() ) );
+    }
+
+    public String buscarProduto(String nomeProduto){
+        for (Produto produto: listaProduto){
+            if (produto.nome().equalsIgnoreCase(nomeProduto)){
+               return "Nome: " + produto.nome() + "\nPreço: " + produto.preco();
+            }
+        }
+        return "Produto com o nome '" + nomeProduto +"' não encontrado";
     }
 
 }
