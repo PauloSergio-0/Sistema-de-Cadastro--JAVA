@@ -38,7 +38,8 @@ public class Menu {
                 opcao = scanner.nextInt();
                 scanner.nextLine();
             } catch (Exception e) {
-                System.err.println(e.getMessage());
+                System.err.println("Erro na entrada de dados(Apenas números)!!"  );
+                scanner.nextLine();
             }
 
 
