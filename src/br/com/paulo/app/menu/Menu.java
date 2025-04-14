@@ -5,6 +5,7 @@ import br.com.paulo.model.Produto;
 import br.com.paulo.service.cliente.CadastroCliente;
 import br.com.paulo.service.produto.CadastroProduto;
 
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Menu {
 
     public static void menu() {
 
-        while (true){
+        while (true) {
 
             System.out.println("""
                     \s
@@ -30,11 +31,18 @@ public class Menu {
                         0 - Sair
                     \s""");
 
-            int opcao = scanner.nextInt();
-            scanner.nextLine();
+            int opcao = -1;
+
+            try {
+                System.out.println("Escolha uma opção: ");
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
 
 
-            if (opcao == 0){
+            if (opcao == 0) {
                 System.out.println("Saindo do Sistema.......");
                 break;
 
@@ -55,7 +63,7 @@ public class Menu {
                 clientes.buscarEmail("@gmail.com");
             } else if (opcao == 7) {
                 System.out.println(produtos.buscarProduto(nomeProduto()));
-            }else {
+            } else {
                 System.out.println("Opção não encontrada");
             }
 
@@ -81,7 +89,7 @@ public class Menu {
         double preco = scanner.nextDouble();
 
         return new Produto(nome, preco);
-    };
+    }
 
     private static String nomeProduto(){
         System.out.println("Nome Produto: ");
